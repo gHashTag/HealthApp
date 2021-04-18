@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 interface ButtonT {
   title: string,
-  onPress?: () => void,
+  onPress: () => void,
   viewStyle?: StyleProp<ViewStyle>
 }
 
@@ -27,9 +27,11 @@ const Button = memo<ButtonT>(({ title, onPress, viewStyle }) => {
   const { container, h } = styles
 
   return (
-    <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
+    <View style={[container, viewStyle]}>
+     <TouchableOpacity onPress={onPress} >
       <Txt h2 textStyle={[h]} title={title} color="#FFF" />
     </TouchableOpacity>
+    </View>
   )
 })
 

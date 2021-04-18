@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import Slider from '@react-native-community/slider'
 import { Txt } from '../Txt'
@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
 })
 
 interface SliderStepT {
-  title: string
+  title: string,
+  value: number,
   onChange: (x: number) => void
 }
 
-const SliderStep = ({ title, onChange }: SliderStepT) => {
-  const [value, setValue] = useState(0)
+const SliderStep = ({ title, value, onChange }: SliderStepT) => {
 
   const label = (status: number) =>
     ({
@@ -51,12 +51,21 @@ const SliderStep = ({ title, onChange }: SliderStepT) => {
       4: '#FC5656'
     }[status])
 
+    const colorTitle = (status: number) =>
+    ({
+      0: '#A1A9B5',
+      1: '#FFCC48',
+      2: '#FFA73F',
+      3: '#FC7E56',
+      4: '#FC5656'
+    }[status])
+
   const { container, h0, h2 } = styles
 
   return (
     <View style={container}>
       <Txt h0 textStyle={h0} title={title} />
-      <Txt h2 textStyle={h2} title={label(value) || ''} color={color(value)} />
+      <Txt h2 textStyle={h2} title={label(value) || ''} color={colorTitle(value)} />
       <Slider
         style={styles.slider}
         minimumValue={0}
@@ -66,10 +75,7 @@ const SliderStep = ({ title, onChange }: SliderStepT) => {
         value={value}
         minimumTrackTintColor={color(value)}
         maximumTrackTintColor="#E5E5E5"
-        onValueChange={val => {
-          setValue(val)
-          onChange(val)
-        }}
+        onValueChange={val => onChange(val)}
       />
     </View>
   )

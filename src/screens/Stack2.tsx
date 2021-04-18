@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import { ListState, SliderStep } from '../components'
+import { ListState, SliderStep, Button } from '../components'
 import DiaryStore from '../store/diary'
 
 const styles = StyleSheet.create({
@@ -17,15 +17,15 @@ const styles = StyleSheet.create({
   }
 })
 
-
-const Stack0 = observer(({ navigation }) => {
+const Stack2 = observer(() => {
   const { container } = styles
+  const onChangeListState = () => console.log(`ListState`)
+
   return (
     <View style={container}>
-      <ListState onChange={() => navigation.navigate('Stack1')} />
+      <ListState onChange={onChangeListState} />
     </View>
   )
 })
 
-
-export { Stack0 }
+export { Stack2 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { observer } from 'mobx-react-lite'
 import { ImageState, Txt } from '..'
+import DiaryStore from '../../store/diary'
 
 const styles = StyleSheet.create({
   h0: {
@@ -47,24 +49,16 @@ const data = [
 const numbers = ['one', 'two', 'three', 'four', 'five']
 
 interface ListStateT {
-  onChange: (x: number) => void
+  onChange: () => void
 }
 
-const ListState = ({ onChange }: ListStateT) => {
+const ListState = observer(({ onChange }: ListStateT) => {
   const { h0, item, scroll } = styles
-
-  const [value, setValue] = useState({
-    one: false,
-    two: false,
-    three: false,
-    four: false,
-    five: false
-  })
-
+  
   const _onChangeState = (number: number) => () => {
-    onChange(number - 1)
+    onChange()
     const defaultObject = numbers.reduce((acc, el) => ({ ...acc, [el]: false }), {})
-    setValue({ ...defaultObject, [numbers[number - 1]]: true })
+    DiaryStore.setMood({ ...defaultObject, [numbers[number - 1]]: true })
   }
 
   return (
@@ -72,7 +66,7 @@ const ListState = ({ onChange }: ListStateT) => {
       <Txt h0 textStyle={h0} title="Настроение" />
       <View style={scroll}>
         {data.map(({ status, id, mood }: ItemT) => {
-          const done = value[numbers[id - 1]]
+          const done = DiaryStore.mood[numbers[id - 1]]
           const name = done ? 'Active' : 'Disable'
           return (
             <View key={id} style={item}>
@@ -83,6 +77,6 @@ const ListState = ({ onChange }: ListStateT) => {
       </View>
     </>
   )
-}
+})
 
 export { ListState }
