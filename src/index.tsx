@@ -28,6 +28,7 @@ const App = () => {
           fontFamily: 'Montserrat',
           fontSize: 16
         },
+        cardStyle: { backgroundColor: "#FFF" }
       }}
       >
         <Stack.Screen name="Stack0"  component={Stack0} options={{ title: 'Дневник' }} />

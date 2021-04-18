@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     width: 304,
     height: 50,
     justifyContent: 'center',
-    backgroundColor: '#0684F8',
     borderRadius: 30
   },
   h: {
@@ -21,13 +20,14 @@ interface ButtonT {
   title: string,
   onPress: () => void,
   viewStyle?: StyleProp<ViewStyle>
+  enable: boolean
 }
 
-const Button = memo<ButtonT>(({ title, onPress, viewStyle }) => {
+const Button = memo<ButtonT>(({ title, onPress, viewStyle, enable = false }) => {
   const { container, h } = styles
 
   return (
-    <View style={[container, viewStyle]}>
+    <View style={[container, viewStyle, { backgroundColor: enable ? '#0684F8' : '#A1A9B5'} ]}>
      <TouchableOpacity onPress={onPress} >
       <Txt h2 textStyle={[h]} title={title} color="#FFF" />
     </TouchableOpacity>

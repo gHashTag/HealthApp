@@ -6,11 +6,10 @@ import DiaryStore from '../../store/diary'
 
 const styles = StyleSheet.create({
   h0: {
-    left: 14,
-    bottom: 20
+    left: 10,
   },
   item: { left: 5, top: 16 },
-  scroll: { flexDirection: 'row', height: 120 }
+  scroll: { flexDirection: 'row' }
 })
 
 interface ItemT {
@@ -50,7 +49,7 @@ const data = [
 const numbers = ['one', 'two', 'three', 'four', 'five']
 
 interface ListStateT {
-  onChange: () => void
+  onChange?: () => void
 }
 
 const IconState = observer(({ onChange }: ListStateT) => {
