@@ -6,7 +6,8 @@ import DiaryStore from '../../store/diary'
 
 const styles = StyleSheet.create({
   h0: {
-    left: 14
+    left: 14,
+    bottom: 20
   },
   item: { left: 5, top: 16 },
   scroll: { flexDirection: 'row', height: 120 }
@@ -52,7 +53,7 @@ interface ListStateT {
   onChange: () => void
 }
 
-const ListState = observer(({ onChange }: ListStateT) => {
+const IconState = observer(({ onChange }: ListStateT) => {
   const { h0, item, scroll } = styles
   
   const _onChangeState = (number: number) => () => {
@@ -70,7 +71,9 @@ const ListState = observer(({ onChange }: ListStateT) => {
           const name = done ? 'Active' : 'Disable'
           return (
             <View key={id} style={item}>
-              <ImageState status={`${status}${name}`} mood={mood} done={!done} onPress={_onChangeState(id)} />
+              {done &&
+                <ImageState status={`${status}${name}`} mood={mood} done={!done} onPress={_onChangeState(id)} />
+              }
             </View>
           )
         })}
@@ -79,4 +82,4 @@ const ListState = observer(({ onChange }: ListStateT) => {
   )
 })
 
-export { ListState }
+export { IconState }
