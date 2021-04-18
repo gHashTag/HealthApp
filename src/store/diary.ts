@@ -38,15 +38,15 @@ class Diary {
   }
 
   reset() {
-    this.mood = { 
+    this.mood = {
       one: false,
       two: false,
       three: false,
       four: false,
-      five: false 
-    } 
+      five: false
+    }
     this.anxiety = 0
-    this.stress = 0 
+    this.stress = 0
   }
 }
 

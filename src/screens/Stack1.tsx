@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ScrollView, View, StyleSheet } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParamList } from '../'
@@ -9,13 +9,13 @@ import DiaryStore from '../store/diary'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 60,
+    top: 20,
     flexDirection: 'column',
     backgroundColor: '#FFF'
   },
   btnStyle: {
     position: 'absolute',
-    bottom: 100
+    bottom: 30
   }
 })
 
@@ -37,15 +37,14 @@ const Stack1 = observer(({ navigation }: Stack1T) => {
   const onChangeListState = () => setEnable(true)
 
   const onChangeAnxiety = (arg: number) => {
-    DiaryStore.setAnxienty(arg) 
+    DiaryStore.setAnxienty(arg)
     setEnable(true)
   }
 
   const onChangeStress = (arg: number) => {
-    DiaryStore.setStress(arg) 
+    DiaryStore.setStress(arg)
     setEnable(true)
   }
-
 
   return (
     <View style={container}>

@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { StyleSheet, Image, StyleProp, ImageStyle, ImageBackground, TouchableOpacity } from 'react-native'
+import { StyleSheet, Image, StyleProp, ImageStyle, ImageBackground, TouchableWithoutFeedback } from 'react-native'
 import { ICONS } from './images'
 import { Txt } from '../Txt'
 
@@ -36,12 +36,12 @@ const ImageState = memo(({ status, mood, imageStyle, done, onPress }: ImageState
   const { container, img, doneStyle, h1 } = styles
   const source = () => ICONS.filter(x => x.title === status)[0].path
   return (
-    <TouchableOpacity style={container} onPress={onPress}>
+    <TouchableWithoutFeedback style={container} onPress={onPress}>
       <ImageBackground source={source()} style={[img, imageStyle]}>
         {!done && <Image source={require('./images/Done.png')} style={doneStyle} />}
         <Txt h1 textStyle={h1} title={mood} />
       </ImageBackground>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   )
 })
 

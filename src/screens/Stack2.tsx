@@ -41,7 +41,6 @@ type Stack2T = {
   navigation: ProfileScreenNavigationProp
 }
 
-
 const Stack2 = observer(({ navigation }: Stack2T) => {
   const { container, viewStyle, one, two, three, buttonStyle } = styles
 

@@ -5,7 +5,7 @@ import { Txt } from '../Txt'
 
 const styles = StyleSheet.create({
   container: {
-    top: 100
+    top: 10,
   },
   title: {
     padding: 20,

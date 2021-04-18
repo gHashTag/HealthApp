@@ -1,15 +1,19 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { ScrollView, View, StyleSheet } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import { ImageState, Txt } from '..'
 import DiaryStore from '../../store/diary'
+import { Space } from '../Space'
 
 const styles = StyleSheet.create({
+  container: {
+    height: 150
+  },
   h0: {
     left: 14
   },
   item: { left: 5, top: 16 },
-  scroll: { flexDirection: 'row', height: 120 }
+  scroll: { flexDirection: 'row' }
 })
 
 interface ItemT {
@@ -53,7 +57,7 @@ interface ListStateT {
 }
 
 const ListState = observer(({ onChange }: ListStateT) => {
-  const { h0, item, scroll } = styles
+  const { container, h0, item, scroll } = styles
 
   const _onChangeState = (number: number) => () => {
     onChange()
@@ -62,9 +66,9 @@ const ListState = observer(({ onChange }: ListStateT) => {
   }
 
   return (
-    <>
+    <View style={container}>
       <Txt h0 textStyle={h0} title="Настроение" />
-      <View style={scroll}>
+      <ScrollView style={scroll} horizontal showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
         {data.map(({ status, id, mood }: ItemT) => {
           const done = DiaryStore.mood[numbers[id - 1]]
           const name = done ? 'Active' : 'Disable'
@@ -74,8 +78,9 @@ const ListState = observer(({ onChange }: ListStateT) => {
             </View>
           )
         })}
-      </View>
-    </>
+        <Space width={30} />
+      </ScrollView>
+    </View>
   )
 })
 

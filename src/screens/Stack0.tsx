@@ -21,17 +21,15 @@ const styles = StyleSheet.create({
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Stack0'>
 
-
 type Stack0T = {
   navigation: ProfileScreenNavigationProp
 }
 
 const Stack0 = observer(({ navigation }: Stack0T) => {
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => DiaryStore.reset() )
+    const unsubscribe = navigation.addListener('focus', () => DiaryStore.reset())
     return unsubscribe
   }, [navigation])
-  
 
   const { container } = styles
   return (
