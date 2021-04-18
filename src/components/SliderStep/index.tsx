@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   slider: {
     alignSelf: 'center',
     height: 60,
-    width: '90%'
+    width: '95%'
   },
   h0: {
     left: 20

@@ -25,7 +25,6 @@ type Stack1T = {
   navigation: ProfileScreenNavigationProp
 }
 
-
 const Stack1 = observer(({ navigation }: Stack1T) => {
   const [enable, setEnable] = useState(true)
   const { container, btnStyle } = styles
