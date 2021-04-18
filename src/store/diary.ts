@@ -1,11 +1,11 @@
 import { makeAutoObservable } from 'mobx'
 
 interface MoodT {
-  one: boolean,
-  two: boolean,
-  three: boolean,
-  four: boolean,
-  five: boolean  
+  one: boolean
+  two: boolean
+  three: boolean
+  four: boolean
+  five: boolean
 }
 
 class Diary {
@@ -26,7 +26,7 @@ class Diary {
   }
 
   setMood(obj: MoodT) {
-    this.mood = {...obj}
+    this.mood = { ...obj }
   }
 
   setAnxienty(arg: number) {

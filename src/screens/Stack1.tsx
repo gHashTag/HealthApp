@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import { ListState, SliderStep, Button,  } from '../components'
+import { ListState, SliderStep, Button } from '../components'
 import DiaryStore from '../store/diary'
 
 const styles = StyleSheet.create({
@@ -17,20 +17,34 @@ const styles = StyleSheet.create({
   }
 })
 
-
 const Stack1 = observer(({ navigation }) => {
+  const [enable, setEnable] = useState(false)
   const { container, btnStyle } = styles
 
-  const onChangeListState = () => console.log(`ListState`)
-  const onChangeAnxiety = (arg: number) => DiaryStore.setAnxienty(arg) 
-  const onChangeStress = (arg: number) => DiaryStore.setStress(arg) 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => setEnable(false))
+    return unsubscribe
+  }, [navigation])
+
+  const onChangeListState = () => setEnable(true)
+
+  const onChangeAnxiety = (arg: number) => {
+    DiaryStore.setAnxienty(arg) 
+    setEnable(true)
+  }
+
+  const onChangeStress = (arg: number) => {
+    DiaryStore.setStress(arg) 
+    setEnable(true)
+  }
+
 
   return (
     <View style={container}>
       <ListState onChange={onChangeListState} />
       <SliderStep title="Уровень тревожности" onChange={onChangeAnxiety} value={DiaryStore.anxiety} />
       <SliderStep title="Уровень стресса" onChange={onChangeStress} value={DiaryStore.stress} />
-      <Button title="Сохранить" viewStyle={btnStyle} onPress={() => navigation.navigate('Stack2')}/>
+      <Button title="Сохранить" viewStyle={btnStyle} onPress={() => navigation.navigate('Stack2')} enable={enable} />
     </View>
   )
 })

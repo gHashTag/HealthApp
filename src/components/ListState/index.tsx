@@ -54,7 +54,7 @@ interface ListStateT {
 
 const ListState = observer(({ onChange }: ListStateT) => {
   const { h0, item, scroll } = styles
-  
+
   const _onChangeState = (number: number) => () => {
     onChange()
     const defaultObject = numbers.reduce((acc, el) => ({ ...acc, [el]: false }), {})

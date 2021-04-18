@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
 })
 
 interface ButtonT {
-  title: string,
-  onPress: () => void,
+  title: string
+  onPress: () => void
   viewStyle?: StyleProp<ViewStyle>
   enable: boolean
 }
@@ -27,10 +27,10 @@ const Button = memo<ButtonT>(({ title, onPress, viewStyle, enable = false }) => 
   const { container, h } = styles
 
   return (
-    <View style={[container, viewStyle, { backgroundColor: enable ? '#0684F8' : '#A1A9B5'} ]}>
-     <TouchableOpacity onPress={onPress} >
-      <Txt h2 textStyle={[h]} title={title} color="#FFF" />
-    </TouchableOpacity>
+    <View style={[container, viewStyle, { backgroundColor: enable ? '#0684F8' : '#A1A9B5' }]}>
+      <TouchableOpacity onPress={onPress}>
+        <Txt h2 textStyle={[h]} title={title} color="#FFF" />
+      </TouchableOpacity>
     </View>
   )
 })

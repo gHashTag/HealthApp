@@ -26,13 +26,12 @@ const styles = StyleSheet.create({
 })
 
 interface SliderStepT {
-  title: string,
-  value: number,
+  title: string
+  value: number
   onChange: (x: number) => void
 }
 
 const SliderStep = ({ title, value, onChange }: SliderStepT) => {
-
   const label = (status: number) =>
     ({
       0: 'отсутствует',
@@ -51,7 +50,7 @@ const SliderStep = ({ title, value, onChange }: SliderStepT) => {
       4: '#FC5656'
     }[status])
 
-    const colorTitle = (status: number) =>
+  const colorTitle = (status: number) =>
     ({
       0: '#A1A9B5',
       1: '#FFCC48',

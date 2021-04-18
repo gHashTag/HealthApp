@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   }
 })
 
-
 const Stack0 = observer(({ navigation }) => {
   const { container } = styles
   return (
@@ -26,6 +25,5 @@ const Stack0 = observer(({ navigation }) => {
     </View>
   )
 })
-
 
 export { Stack0 }

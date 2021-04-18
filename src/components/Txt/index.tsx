@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   h3Style: {
     fontSize: 14,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat'
   }
 })
 

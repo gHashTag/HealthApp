@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   one: {
     left: 10,
-    width: 100,
+    width: 100
   },
   two: {
     top: 38,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   viewStyle: {
     top: 35,
-    right: 50,
+    right: 50
   },
   buttonStyle: {
     top: 30
@@ -50,7 +50,6 @@ const Stack2 = observer(({ navigation }) => {
       <View style={three}>
         <ButtonEdit onPress={() => navigation.navigate('Stack1')} viewStyle={buttonStyle} />
       </View>
-      
     </View>
   )
 })

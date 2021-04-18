@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleProp, ViewStyle, View,  StyleSheet } from 'react-native'
+import { StyleProp, ViewStyle, View, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -16,9 +16,7 @@ interface CircleT {
 
 const Circle = ({ viewStyle, color = 'gold' }: CircleT) => {
   const { container } = styles
-  return (
-    <View style={[container, viewStyle, { backgroundColor: color }]} />
-  )
+  return <View style={[container, viewStyle, { backgroundColor: color }]} />
 }
 
 export { Circle }

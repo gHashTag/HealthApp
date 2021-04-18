@@ -25,12 +25,11 @@ const styles = StyleSheet.create({
 })
 
 interface StatusT {
-  title: string,
-  value: number,
+  title: string
+  value: number
 }
 
 const Status = ({ title, value }: StatusT) => {
-
   const label = (status: number) =>
     ({
       0: 'отсутствует',
@@ -40,7 +39,7 @@ const Status = ({ title, value }: StatusT) => {
       4: 'невыносимый'
     }[status])
 
-    const colorTitle = (status: number) =>
+  const colorTitle = (status: number) =>
     ({
       0: '#A1A9B5',
       1: '#FFCC48',
