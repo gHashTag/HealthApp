@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import { ListState, SliderStep } from '../components'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '../'
+import { ListState } from '../components'
 import DiaryStore from '../store/diary'
 
 const styles = StyleSheet.create({
@@ -17,7 +19,20 @@ const styles = StyleSheet.create({
   }
 })
 
-const Stack0 = observer(({ navigation }) => {
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Stack0'>
+
+
+type Stack0T = {
+  navigation: ProfileScreenNavigationProp
+}
+
+const Stack0 = observer(({ navigation }: Stack0T) => {
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => DiaryStore.reset() )
+    return unsubscribe
+  }, [navigation])
+  
+
   const { container } = styles
   return (
     <View style={container}>

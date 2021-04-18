@@ -5,6 +5,12 @@ import { Stack0, Stack1, Stack2 } from './screens'
 
 const Stack = createStackNavigator()
 
+export type RootStackParamList = {
+  Stack0: undefined
+  Stack1: undefined
+  Stack2: undefined
+}
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {

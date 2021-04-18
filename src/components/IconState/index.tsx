@@ -48,15 +48,10 @@ const data = [
 
 const numbers = ['one', 'two', 'three', 'four', 'five']
 
-interface ListStateT {
-  onChange?: () => void
-}
-
-const IconState = observer(({ onChange }: ListStateT) => {
+const IconState = observer(() => {
   const { h0, item, scroll } = styles
 
   const _onChangeState = (number: number) => () => {
-    onChange()
     const defaultObject = numbers.reduce((acc, el) => ({ ...acc, [el]: false }), {})
     DiaryStore.setMood({ ...defaultObject, [numbers[number - 1]]: true })
   }

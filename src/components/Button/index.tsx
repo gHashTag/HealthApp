@@ -28,11 +28,12 @@ const Button = memo<ButtonT>(({ title, onPress, viewStyle, enable = false }) => 
 
   return (
     <View style={[container, viewStyle, { backgroundColor: enable ? '#0684F8' : '#A1A9B5' }]}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity activeOpacity={enable ? 0.2 : 1} onPress={() => enable ? onPress() : null}>
         <Txt h2 textStyle={[h]} title={title} color="#FFF" />
       </TouchableOpacity>
     </View>
   )
 })
+
 
 export { Button }

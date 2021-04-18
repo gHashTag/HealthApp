@@ -36,6 +36,18 @@ class Diary {
   setStress(arg: number) {
     this.stress = arg
   }
+
+  reset() {
+    this.mood = { 
+      one: false,
+      two: false,
+      three: false,
+      four: false,
+      five: false 
+    } 
+    this.anxiety = 0
+    this.stress = 0 
+  }
 }
 
 export default new Diary()

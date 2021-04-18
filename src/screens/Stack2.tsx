@@ -1,6 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { observer } from 'mobx-react-lite'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '..'
 import { IconState, VerticalLine, ButtonEdit, Status, Space } from '../components'
 import DiaryStore from '../store/diary'
 
@@ -33,7 +35,14 @@ const styles = StyleSheet.create({
   }
 })
 
-const Stack2 = observer(({ navigation }) => {
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Stack2'>
+
+type Stack2T = {
+  navigation: ProfileScreenNavigationProp
+}
+
+
+const Stack2 = observer(({ navigation }: Stack2T) => {
   const { container, viewStyle, one, two, three, buttonStyle } = styles
 
   return (

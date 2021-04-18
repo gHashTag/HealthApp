@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { observer } from 'mobx-react-lite'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '../'
 import { ListState, SliderStep, Button } from '../components'
 import DiaryStore from '../store/diary'
 
@@ -17,8 +19,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const Stack1 = observer(({ navigation }) => {
-  const [enable, setEnable] = useState(false)
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Stack1'>
+
+type Stack1T = {
+  navigation: ProfileScreenNavigationProp
+}
+
+
+const Stack1 = observer(({ navigation }: Stack1T) => {
+  const [enable, setEnable] = useState(true)
   const { container, btnStyle } = styles
 
   useEffect(() => {
